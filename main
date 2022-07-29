@@ -6,7 +6,7 @@ local UserInputService = game:GetService("UserInputService")
 
 function dragify(Frame)
     local dragToggle = nil
-    local dragSpeed = .25
+    local dragSpeed = .4
     local dragInput = nil
     local dragStart = nil
     local dragPos = nil
@@ -110,7 +110,7 @@ function library:Window(options)
     Main_Logo.Parent = _1LeftSide
     Main_Logo.BackgroundTransparency = 1.000
     Main_Logo.Position = UDim2.new(0.242857158, 0, 0.0225000009, 0)
-    Main_Logo.Size = UDim2.new(0, 35, 0, 35)
+    Main_Logo.Size = UDim2.new(0, 50, 0, 50) -- logo size
     Main_Logo.Image = "rbxassetid://" .. tostring(Logo)
     Main_Logo.ImageColor3 = Accent
     Main_Logo.ScaleType = Enum.ScaleType.Fit
