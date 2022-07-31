@@ -484,6 +484,26 @@ Tab:Button{
    end
 }
 
+Tab:Button{
+	Name = "Buy Rare Candies",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','getShop')
+_p.Network:get('PDS','MaxBuy', '7a\255s\211\2200\169>')
+_p.Network:get('PDS', 'buyItem','7a\255s\211\2200\169>', 99)
+
+   end
+}
 --[[ 
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
