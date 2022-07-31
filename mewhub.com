@@ -473,21 +473,21 @@ local Tab = GUI:Tab{
 Tab:Button{
 	Name = "Pokemart",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/iHgNAxUn"))()
+	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/Shop"))()
    end
 }
 
 Tab:Button{
 	Name = "BP Shop",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/8zkK4pLG"))()
+	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/BP%20shop"))()
    end
 }
 
 Tab:Button{
 	Name = "Stoneshop",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/XNArzkXX"))()
+	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/Stone%20Shop"))()
    end
 }
 
