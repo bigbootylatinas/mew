@@ -484,26 +484,6 @@ Tab:Button{
    end
 }
 
-Tab:Button{
-	Name = "Buy Rare Candies",
-	Description = nil,
-	Callback = function() 
-      local _p = nil
-for _, v in pairs(getgc(true)) do
-   if typeof(v) == "table" then
-       if rawget(v, "PlayerData") then
-           _p = v
-           break
-       end
-   end
-end
-
-_p.Network:get('PDS','getShop')
-_p.Network:get('PDS','MaxBuy', '7a\255s\211\2200\169>')
-_p.Network:get('PDS', 'buyItem','7a\255s\211\2200\169>', 99)
-
-   end
-}
 --[[ 
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
@@ -684,5 +664,155 @@ local headers = {
 request = http_request or request or HttpPost or syn.request
 local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
 request(abcdef)
+   end
+}
+
+--[[ 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢆⣤⡞⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢠⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣀⣾⢳⠀⠀⠀⠀⢸⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣀⡤⠴⠊⠉⠀⠀⠈⠳⡀⠀⠀⠘⢎⠢⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+⠳⣄⠀⠀⡠⡤⡀⠀⠘⣇⡀⠀⠀⠀⠉⠓⠒⠺⠭⢵⣦⡀⠀⠀⠀
+⠀⢹⡆⠀⢷⡇⠁⠀⠀⣸⠇⠀⠀⠀⠀⠀⢠⢤⠀⠀⠘⢷⣆⡀⠀
+⠀⠀⠘⠒⢤⡄⠖⢾⣭⣤⣄⠀⡔⢢⠀⡀⠎⣸⠀⠀⠀⠀⠹⣿⡀Button Nine
+⠀⠀⢀⡤⠜⠃⠀⠀⠘⠛⣿⢸⠀⡼⢠⠃⣤⡟⠀⠀⠀⠀⠀⣿⡇
+⠀⠀⠸⠶⠖⢏⠀⠀⢀⡤⠤⠇⣴⠏⡾⢱⡏⠁⠀⠀⠀⠀⢠⣿⠃
+⠀⠀⠀⠀⠀⠈⣇⡀⠿⠀⠀⠀⡽⣰⢶⡼⠇⠀⠀⠀⠀⣠⣿⠟⠀
+⠀⠀⠀⠀⠀⠀⠈⠳⢤⣀⡶⠤⣷⣅⡀⠀⠀⠀⣀⡠⢔⠕⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀
+--]]
+
+local Tab = GUI:Tab{
+	Name = "Levels + EV",
+	Icon = "rbxassetid://10422851897"
+}
+
+Tab:Button{
+	Name = "Buy Rare Candies (x99)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','getShop')
+_p.Network:get('PDS','MaxBuy', '7a\255s\211\2200\169>')
+_p.Network:get('PDS', 'buyItem','7a\255s\211\2200\169>', 99)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 1)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 1)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 2)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 2)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 3)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 3)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 4)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 4)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 5)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 5)
+   end
+}
+
+Tab:Button{
+	Name = "Use Rare Candy (party slot 6)",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+
+_p.Network:get('PDS','useItem','rarecandy', 6)
    end
 }
