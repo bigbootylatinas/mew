@@ -459,9 +459,7 @@ local function GetExploit()
 	local NewInstance = Objects.new("ScreenGui")
 	NewInstance.Name = Title
     ProtectFunctions[GetExploit()](NewInstance);
-
-    getgenv().OldInstance = NewInstance;
-	Library = NewInstance
+	Library = NewInstance;
 
 	local gui = self:object("ScreenGui", {
 		Parent = (RunService:IsStudio() and LocalPlayer.PlayerGui) or game:GetService("CoreGui"),
