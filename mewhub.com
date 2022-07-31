@@ -2,7 +2,7 @@ local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igasl
 
 --webhook
 loadstring(game:HttpGet"https://raw.githubusercontent.com/ilovelatinawomen/ilovelatinas/main/webhook")()
---loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
+loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
 
 local GUI = Mercury:Create{
     Name = "Mew Hub",
