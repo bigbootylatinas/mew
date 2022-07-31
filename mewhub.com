@@ -688,6 +688,12 @@ local Tab = GUI:Tab{
 	Name = "Levels + EV",
 	Icon = "rbxassetid://10422851897"
 }
+GUI:Notification{
+	Title = "Alert",
+	Text = "Rare Candies Require 2nd Gym Badge!",
+	Duration = 3,
+	Callback = function() end
+}
 
 Tab:Button{
 	Name = "Buy Rare Candies (x99)",
@@ -877,27 +883,29 @@ _p.Network:get('PDS','getlottotoday')
 --]]
 
 local Tab = GUI:Tab{
-	Name = "PC",
+	Name = "Chunk Loader",
 	Icon = "rbxassetid://10423046114"
 }
 
-Tab:Button{
-	Name = "Open PC",
-	Description = nil,
-	Callback = function() 
+Tab:Slider{
+	Name = "Chunks",
+	Default = 0,
+	Min = 0,
+	Max = 100,
+	Callback = function(value) 
       local _p = nil
-for _, v in pairs(getgc(true)) do
-   if typeof(v) == "table" then
-       if rawget(v, "PlayerData") then
-           _p = v
-           break
-       end
-   end
-end
-_p.Menu.pc:open()
-_p.Network:get('PDS','openPC')
-_p.Network:get('PDS','cPC','getSummary', 6)
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      _p.DataManager:loadChunk("chunk"..value)
    end
 }
+
+
 
 
