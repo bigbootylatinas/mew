@@ -629,44 +629,29 @@ Tab:Button{
 --]]
 
 local Tab = GUI:Tab{
-	Name = "Bug Report",
+	Name = "Chunk Loader",
 	Icon = "rbxassetid://10422353503"
 }
 
-Tab:Textbox{
-	Name = "Report a Bug!",
+Tab:Slider{
+	Name = "Chunks",
+	Default = 0,
+	Min = 0,
+	Max = 100,
 	Callback = function(value) 
-       local webhookcheck =
-  is_sirhurt_closure and "Sirhurt" or pebc_execute and "ProtoSmasher" or syn and "Synapse X" or
-  secure_load and "Sentinel" or
-  KRNL_LOADED and "Krnl" or
-  SONA_LOADED and "Sona" or
-  "Kid with shit exploit"
-
-local url =
-  "https://vineyard.performave.com/api/webhook/v1/proxy/929b9614-9f2a-4695-93a4-97cfea77a531'"
-local data = {
-  ["embeds"] = {
-      {
-          ["title"] = "**Someone Submitted A Bug Report!**",
-          ["description"] = "Username: " .. game.Players.LocalPlayer.Name.." with **"..webhookcheck.."**".." said: "..value,
-          ["type"] = "rich",
-          ["color"] = tonumber(0x7269da),
-          }
-      }
-  }
-
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-
-local headers = {
-  ["content-type"] = "application/json"
-}
-request = http_request or request or HttpPost or syn.request
-local abcdef = {Url = url, Body = newdata, Method = "POST", Headers = headers}
-request(abcdef)
+      local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      _p.DataManager:loadChunk("chunk"..value)
    end
 }
-
+ 
 --[[ 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
@@ -883,28 +868,113 @@ _p.Network:get('PDS','getlottotoday')
 --]]
 
 local Tab = GUI:Tab{
-	Name = "Chunk Loader",
+	Name = "PC",
 	Icon = "rbxassetid://10423046114"
 }
 
-Tab:Slider{
-	Name = "Chunks",
-	Default = 0,
-	Min = 0,
-	Max = 100,
-	Callback = function(value) 
-      local _p = nil
-      for _, v in pairs(getgc(true)) do
-         if typeof(v) == "table" then
-             if rawget(v, "PlayerData") then
-                 _p = v
-                 break
-             end
-         end
-      end
-      _p.DataManager:loadChunk("chunk"..value)
+Tab:Textbox{
+	Name = "Nickname (party slot 1)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
    end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 1, text)
+	    end
 }
+
+Tab:Textbox{
+	Name = "Nickname (party slot 2)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 2, text)
+	    end
+}
+
+Tab:Textbox{
+	Name = "Nickname (party slot 3)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 3, text)
+	    end
+}
+
+Tab:Textbox{
+	Name = "Nickname (party slot 4)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 4, text)
+	    end
+}
+
+Tab:Textbox{
+	Name = "Nickname (party slot 5)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 5, text)
+	    end
+}
+
+Tab:Textbox{
+	Name = "Nickname (party slot 6)",
+	Callback = function(text) 
+	          local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS', 'openPC')
+_p.Network:get('PDS', 'cPC', 'nickname', 6, text)
+	    end
+}
+
+
 
 
 
