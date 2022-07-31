@@ -491,6 +491,22 @@ Tab:Button{
    end
 }
 
+Tab:Button{
+	Name = "Buy Sushi (gives berries + prism scales",
+	Description = nil,
+	Callback = function() 
+      local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      _p.Network:get('PDS', 'buySushi')
+   end
+}
 --[[ 
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
    ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
