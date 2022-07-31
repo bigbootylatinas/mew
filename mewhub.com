@@ -35,6 +35,13 @@ local Tab = GUI:Tab{
 }
 
 Tab:Button{
+	Name = "Save Game",
+	Description = nil,
+	Callback = function() _p.Network:get('PDS', 'saveGame')
+   end
+}
+
+Tab:Button{
 	Name = "Skipchat (glitchy)",
 	Description = nil,
 	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/5dcu1Swy"))()
