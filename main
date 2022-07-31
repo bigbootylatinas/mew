@@ -1,37 +1,3 @@
-local function GetExploit()
-   local Table = {};
-   Table.Synapse = syn;
-   Table.ProtoSmasher = pebc_create;
-   Table.Sentinel = issentinelclosure;
-   Table.ScriptWare = getexecutorname;
-   
-   for ExploitName, ExploitFunction in next, Table do
-       if (ExploitFunction) then
-           return ExploitName;
-       end;
-   end;
-       
-   return "Undefined";
-end;
-
-local ProtectFunctions = {};
-ProtectFunctions.Synapse = function(GuiObject) syn.protect_gui(GuiObject); GuiObject.Parent = CoreGuiService; end;
-ProtectFunctions.ProtoSmasher = function(GuiObject) GuiObject.Parent = get_hidden_gui(); end;
-ProtectFunctions.Sentinel = function(GuiObject) GuiObject.Parent = CoreGuiService; end;
-ProtectFunctions.ScriptWare = function(GuiObject) GuiObject.Parent = gethui(); end;
-ProtectFunctions.Undefined = function(GuiObject) GuiObject.Parent = CoreGuiService; end;
-
-local NewInstance = Objects.new("ScreenGui")
-NewInstance.Name = Title
-ProtectFunctions[GetExploit()](NewInstance);
-local TweenService = game:GetService("TweenService")
-local RunService = game:GetService("RunService")
-local UserInputService = game:GetService("UserInputService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Mouse = LocalPlayer:GetMouse()
-local HTTPService = game:GetService("HttpService")
-
 local Library = {
 	Themes = {
 		Legacy = {
