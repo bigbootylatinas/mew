@@ -618,17 +618,60 @@ Tab:Button{
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀
 --]]
 
-local Tab = GUI:Tab{
-	Name = "Gyms",
-	Icon = "rbxassetid://10422345128"
+local GetMainData = function()
+    for i, v in pairs(debug.getregistry()) do
+        if typeof(v) == "function" then
+            for a, b in pairs(debug.getupvalues(v)) do
+                if typeof(b) == "table" and rawget(b, "NPCChat") then
+                    return b
+                end
+            end
+        end
+    end
+end
+local _p = GetMainData()
+
+local beatgym = function(gym)
+    local index = {
+        109,
+        112,
+        113,
+        98,
+        126,
+        147,
+        154,
+        173
+    }
+    local battle = _p.Network:get('BattleFunction', 'new', {
+        ["expShare"] = false,
+        ["battleType"] = 1,
+        ["nnalp"] = false,
+        ["isDay"] = true,
+        ["chunkId"] = "chunk1",
+        ["regionId"] = "Route 1",
+        ["trainerId"] = index[gym] or 1
+    })
+    _p.Network:post('BattleEvent', battle.battleId, 'join', 1, ';)')
+    wait(1)
+    _p.Network:post('BattleEvent', battle.battleId, 'forfeit', 'p2')
+    _p.Network:post('BattleEvent', battle.battleId, 'destroy')
+end
+
+local Tab =
+    GUI:Tab {
+    Name = "Gyms",
+    Icon = "rbxassetid://10422345128" -- add some shit here ig
+}
+Tab:Button {
+    Name = "Beat All Gyms",
+    Description = nil,
+    Callback = function()
+        for i = 1,8 do
+            beatgym(i)
+        end
+    end
 }
 
-Tab:Button{
-	Name = "WIP",
-	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/uubLUH5d"))()
-   end
-}
 
 --[[ 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
