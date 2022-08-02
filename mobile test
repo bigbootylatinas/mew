@@ -40,28 +40,102 @@ Tab:Button{
 Tab:Button{
 	Name = "Skipchat (glitchy)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/5dcu1Swy"))()
+	Callback = function() 
+      Get = game:GetService("ReplicatedStorage").GET
+      function GetMainData()
+          for i, v in pairs(debug.getregistry()) do
+              if typeof(v) == "function" then
+                  for a, b in pairs(debug.getupvalues(v)) do
+                      if typeof(b) == "table" and rawget(b, "Fishing") then
+                          return b
+                      end
+                  end
+              end
+          end
+      end
+      Data = GetMainData()
+      AuthKey = debug.getupvalue(Data["Network"]["getAuthKey"], 1)
+      local SkipChat = true
+      local OldWait;
+      OldWait = hookfunction(Data["NPCChat"]["AdvanceSignal"]["wait"], function(...)
+      if SkipChat then
+      return
+      end
+      OldWait(...)
+      end)
+      local Old;
+      Old = hookfunction(Data["NPCChat"]["say"], function(...)
+          local Args = {...}
+      if SkipChat then
+      for i = 3, #Args do
+      if typeof(Args[i]) == "string" then
+      Args[i] = "."
+      end
+      end
+      end
+          return Old(unpack(Args))
+      end)
    end
 }
 
 Tab:Button{
 	Name = "Heal",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/cUsLpEvj"))()
+	Callback = function() Get = game:GetService("ReplicatedStorage").GET
+      function GetMainData()
+          for i, v in pairs(debug.getregistry()) do
+              if typeof(v) == "function" then
+                  for a, b in pairs(debug.getupvalues(v)) do
+                      if typeof(b) == "table" and rawget(b, "Fishing") then
+                          return b
+                      end
+                  end
+              end
+          end
+      end
+      Data = GetMainData()
+      AuthKey = debug.getupvalue(Data["Network"]["getAuthKey"], 1)
+      local key = game:GetService("UserInputService")
+      Get:InvokeServer(AuthKey, "PDS", "getPartyPokeBalls")
    end
 }
 
 Tab:Button{
 	Name = "Fly (without move)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/wMhr459b"))()
+	Callback = function() Get = game:GetService("ReplicatedStorage").GET
+      function GetMainData()
+          for i, v in pairs(debug.getregistry()) do
+              if typeof(v) == "function" then
+                  for a, b in pairs(debug.getupvalues(v)) do
+                      if typeof(b) == "table" and rawget(b, "Fishing") then
+                          return b
+                      end
+                  end
+              end
+          end
+      end
+      Data = GetMainData()
+      AuthKey = debug.getupvalue(Data["Network"]["getAuthKey"], 1)
+      local SF = {}
+      SF["Fly"] = Data["Menu"]["map"]["fly"]
+      SF["Fly"](unpack(SF))
    end
 }
 
 Tab:Button{
 	Name = "Unstuck",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/KH29fLJw"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+ _p.Menu.options:getUnstuck(true)
    end
 }
 
@@ -100,7 +174,74 @@ Tab:Toggle{
 Tab:Button{
 	Name = "Clip + Fly [ ' X ' - Toggle]",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/Universal%20Fly', true))()
+	Callback = function() _G.Speed = 150
+      _G.Key = Enum.KeyCode.X
+      
+      local UIS = game:GetService("UserInputService")
+      local OnRender = game:GetService("RunService").RenderStepped
+      
+      local Player = game:GetService("Players").LocalPlayer
+      local Character = Player.Character or Player.CharacterAdded:Wait()
+      
+      local Camera = workspace.CurrentCamera
+      local Root = Character:WaitForChild("HumanoidRootPart")
+      
+      local C1, C2, C3;
+      local UntitledHood = {Flying = false, Forward = false, Backward = false, Left = false, Right = false}
+      C1 = UIS.InputBegan:Connect(function(Input)
+          if Input.UserInputType == Enum.UserInputType.Keyboard then
+              if Input.KeyCode == _G.Key then
+                  UntitledHood.Flying = not UntitledHood.Flying
+                  Root.Anchored = UntitledHood.Flying
+              elseif Input.KeyCode == Enum.KeyCode.W then
+                  UntitledHood.Forward = true
+              elseif Input.KeyCode == Enum.KeyCode.S then
+                  UntitledHood.Backward = true
+              elseif Input.KeyCode == Enum.KeyCode.A then
+                  UntitledHood.Left = true
+              elseif Input.KeyCode == Enum.KeyCode.D then
+                  UntitledHood.Right = true
+              end
+          end
+      end)
+      
+      C2 = UIS.InputEnded:Connect(function(Input)
+          if Input.UserInputType == Enum.UserInputType.Keyboard then
+              if Input.KeyCode == Enum.KeyCode.W then
+                  UntitledHood.Forward = false
+              elseif Input.KeyCode == Enum.KeyCode.S then
+                  UntitledHood.Backward = false
+              elseif Input.KeyCode == Enum.KeyCode.A then
+                  UntitledHood.Left = false
+              elseif Input.KeyCode == Enum.KeyCode.D then
+                  UntitledHood.Right = false
+              end
+          end
+      end)
+      
+      C3 = Camera:GetPropertyChangedSignal("CFrame"):Connect(function()
+          if UntitledHood.Flying then
+              Root.CFrame = CFrame.new(Root.CFrame.Position, Root.CFrame.Position + Camera.CFrame.LookVector)
+          end
+      end)
+      
+      while true do 
+          local Delta = OnRender:Wait()
+          if UntitledHood.Flying then
+              if UntitledHood.Forward then
+                  Root.CFrame = Root.CFrame + (Camera.CFrame.LookVector * (Delta * _G.Speed))
+              end
+              if UntitledHood.Backward then
+                  Root.CFrame = Root.CFrame + (-Camera.CFrame.LookVector * (Delta * _G.Speed))
+              end
+              if UntitledHood.Left then
+                  Root.CFrame = Root.CFrame + (-Camera.CFrame.RightVector * (Delta * _G.Speed))
+              end
+              if UntitledHood.Right then
+                  Root.CFrame = Root.CFrame + (Camera.CFrame.RightVector * (Delta * _G.Speed))
+              end
+          end
+      end
    end
 }
 
@@ -315,7 +456,12 @@ Tab:Button{
 	Name = "Bring Daycare Man",
 	Description = nil,
 	Callback = function() 
-   loadstring(game:HttpGet("https://pastebin.com/raw/49ZBpgYR"))()
+      local lp = game:service'Players'.LocalPlayer;
+      game:GetService("Workspace").chunk9["DayCareMan"]:MoveTo(lp.Character.LeftHand.Position)
+      local Object = game.ReplicatedStorage.DayCare:WaitForChild("DayCareLady")
+      local CloneObject = Object:Clone()
+      CloneObject.Parent = game.Workspace.chunk9
+      game:GetService("Workspace").chunk9["DayCareLady"]:MoveTo(lp.Character.LeftHand.Position)
    end
 }
 
@@ -368,7 +514,32 @@ local Tab = GUI:Tab{
 Tab:Button{
 	Name = "FPS Booster",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGetAsync('https://pastebin.com/raw/97d1LwPk', true))()
+	Callback = function() _G.Settings = {
+      Players = {
+          ["Ignore Me"] = true, -- Ignore your Character
+          ["Ignore Others"] = true -- Ignore other Characters
+      },
+      Meshes = {
+          Destroy = false, -- Destroy Meshes
+          LowDetail = true -- Low detail meshes (NOT SURE IT DOES ANYTHING)
+      },
+      Images = {
+          Invisible = true, -- Invisible Images
+          LowDetail = false, -- Low detail images (NOT SURE IT DOES ANYTHING)
+          Destroy = false, -- Destroy Images
+      },
+      Other = {
+          ["No Particles"] = true, -- Disables all ParticleEmitter, Trail, Smoke, Fire and Sparkles
+          ["No Camera Effects"] = true, -- Disables all PostEffect's (Camera/Lighting Effects)
+          ["No Explosions"] = true, -- Makes Explosion's invisible
+          ["No Clothes"] = true, -- Removes Clothing from the game
+          ["Low Water Graphics"] = true, -- Removes Water Quality
+          ["No Shadows"] = true, -- Remove Shadows
+          ["Low Rendering"] = true, -- Lower Rendering
+          ["Low Quality Parts"] = true -- Lower quality parts
+      }
+  }
+  loadstring(game:HttpGet("https://raw.githubusercontent.com/CasperFlyModz/discord.gg-rips/main/FPSBooster.lua"))()
    end
 }
 
@@ -426,14 +597,16 @@ Tab:Button{
 Tab:Button{
 	Name = "Ctrl + TP",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/qR6GbWdD"))()
+	Callback = function() local Plr = game:GetService("Players").LocalPlayer local Mouse = Plr:GetMouse()
+
+      Mouse.Button1Down:connect( function() if not game:GetService("UserInputService"):IsKeyDown(Enum.KeyCode.LeftControl) then return end if not Mouse.Target then return end Plr.Character:MoveTo(Mouse.Hit.p) end )
    end
 }
 
 Tab:Button{
 	Name = "Rejoin",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/1gtVMUz3"))()
+	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/Rejoin-Game/main/Rejoin%20Game.lua"))()
    end
 }
 
@@ -469,21 +642,51 @@ local Tab = GUI:Tab{
 Tab:Button{
 	Name = "Pokemart",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/Shop"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+_p.Menu.shop:open()
    end
 }
 
 Tab:Button{
 	Name = "BP Shop",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/BP%20shop"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      
+_p.Menu.battleShop:open()
    end
 }
 
 Tab:Button{
 	Name = "Stoneshop",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/New-PBB-UI/main/Stone%20Shop"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      
+
+_p.Menu.shop:open('stnshp')
    end
 }
 
@@ -529,42 +732,98 @@ local Tab = GUI:Tab{
 Tab:Button{
 	Name = "Absol + Eevee",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/ZDgfKaip"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      print(_p.PlayerData:completeEvent("GetAbsol"))
+      print(_p.PlayerData:completeEvent("Eevee2Awarded"))
    end
 }
 
 Tab:Button{
 	Name = "Enable RTD + Running",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/0bBqeXfN"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      _p.Menu.rtd:enable()
+      _p.RunningShoes:enable()
    end
 }
 
 Tab:Button{
 	Name = "Give Leftovers (1x use)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/qEbp2kqM"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      print(_p.PlayerData:completeEvent("GivenLeftovers"))
    end
 }
 
 Tab:Button{
 	Name = "Give Kings Rock (1x use)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/fgaNVs24"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      print(_p.PlayerData:completeEvent("KingsRockGiven"))
    end
 }
 
 Tab:Button{
 	Name = "BlackWhite Egg (1x use)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/8NQ8ew5v"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      print(_p.PlayerData:completeEvent("ReceivedBWEgg"))
    end
 }
 
 Tab:Button{
 	Name = "Gives SawsbuckCoffee (1x use)",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/5bbMXdrv"))() 
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+      print(_p.PlayerData:completeEvent("GivenSawsbuckCoffee"))
    end
 }
 
@@ -597,7 +856,16 @@ _p.Network:get('PDS','sellItem', "powerbracer", 99)
 Tab:Button{
 	Name = "Tix [+1]",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/dTJVVV4U"))()
+	Callback = function() 		local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "Events") then
+                 _p = v
+                 break
+             end
+         end
+      end
+_p.Network:get("PDS", "AlolanReward",1)
    end
 }
 
@@ -618,18 +886,10 @@ Tab:Button{
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠫⠿⠿⠿⠛⠋⠁⠀⠀⠀⠀
 --]]
 
-local GetMainData = function()
-    for i, v in pairs(debug.getregistry()) do
-        if typeof(v) == "function" then
-            for a, b in pairs(debug.getupvalues(v)) do
-                if typeof(b) == "table" and rawget(b, "NPCChat") then
-                    return b
-                end
-            end
-        end
-    end
-end
-local _p = GetMainData()
+local Tab = GUI:Tab{
+	Name = "Gyms",
+	Icon = "rbxassetid://10422345128"
+}
 
 local beatgym = function(gym)
     local index = {
@@ -656,11 +916,10 @@ local beatgym = function(gym)
     _p.Network:post('BattleEvent', battle.battleId, 'forfeit', 'p2')
     _p.Network:post('BattleEvent', battle.battleId, 'destroy')
 end
-
 local Tab =
     GUI:Tab {
     Name = "Gyms",
-    Icon = "rbxassetid://10422345128" -- add some shit here ig
+    Icon = "rbxassetid://" -- add some shit here ig
 }
 Tab:Button {
     Name = "Beat All Gyms",
@@ -671,7 +930,7 @@ Tab:Button {
         end
     end
 }
-
+}
 
 --[[ 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
@@ -717,7 +976,16 @@ Tab:Slider{
 Tab:Button{
 	Name = "Teleport To Chunk",
 	Description = nil,
-	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/KH29fLJw"))()
+	Callback = function() local _p = nil
+      for _, v in pairs(getgc(true)) do
+         if typeof(v) == "table" then
+             if rawget(v, "PlayerData") then
+                 _p = v
+                 break
+             end
+         end
+      end
+ _p.Menu.options:getUnstuck(true)
    end
 }
 --[[ 
