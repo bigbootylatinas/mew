@@ -1,5 +1,5 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/mew/main/main"))()
-loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
+
 local GUI = Mercury:Create{
     Name = "Mew Hub",
     Size = UDim2.fromOffset(600, 400),
