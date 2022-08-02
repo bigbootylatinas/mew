@@ -1,6 +1,5 @@
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/igaslight/mew/main/main"))()
 
---webhook
 loadstring(game:HttpGetAsync('https://raw.githubusercontent.com/igaslightwomen/aid/main/anti%20afk', true))()
 
 local GUI = Mercury:Create{
@@ -627,7 +626,7 @@ local Tab = GUI:Tab{
 }
 
 Tab:Button{
-	Name = "Show UMV Rocks",
+	Name = "WIP",
 	Description = nil,
 	Callback = function() loadstring(game:HttpGet("https://pastebin.com/raw/uubLUH5d"))()
    end
@@ -656,7 +655,7 @@ local Tab = GUI:Tab{
 }
 
 Tab:Slider{
-	Name = "Chunks",
+	Name = "Chunks (may need restart)",
 	Default = 0,
 	Min = 0,
 	Max = 100,
@@ -859,7 +858,7 @@ local Tab = GUI:Tab{
 }
 
 Tab:Button{
-	Name = "Get Lotto",
+	Name = "Get Lotto (might be broken)",
 	Description = nil,
 	Callback = function() 
       local _p = nil
