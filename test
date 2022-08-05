@@ -1,14 +1,3 @@
-local ContextActionService = experience:GetService("ContextActionService")
-
-local function handleAction(actionName, inputState, inputObject)
-	if inputState == Enum.UserInputState.Begin then
-		print(actionName, inputObject)
-	end
-end
-
--- Bind action to function
-ContextActionService:BindAction("Interact", handleAction, true, Enum.KeyCode.LeftAlt)
-
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -3525,3 +3514,14 @@ return setmetatable(Library, {
 		return rawget(Library, i:lower())
 	end
 })
+
+local ContextActionService = experience:GetService("ContextActionService")
+
+local function handleAction(actionName, inputState, inputObject)
+	if inputState == Enum.UserInputState.Begin then
+		print(actionName, inputObject)
+	end
+end
+
+-- Bind action to function
+ContextActionService:BindAction("Interact", handleAction, true, Enum.KeyCode.LeftAlt)
