@@ -897,7 +897,8 @@ function Library:create(options)
 
 	creditsTab:credit{Name = "ch", Description = "Mew Hub Developer", Discord = "ch#0069", V3rmillion = ""}
 	creditsTab:credit{Name = "Gideon", Description = "Mew Hub Developer", Discord = "Gideon#1228", V3rmillion = ""}
-
+	creditsTab:credit{Name = "afct", Description = "Mew Hub Developer", Discord = "تؤثر#9999", V3rmillion = ""}
+	
 	return mt
 end
 
