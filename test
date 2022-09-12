@@ -14,7 +14,7 @@ for _, v in pairs(getgc(true)) do
             break
         end
     end
-end)
+
 
 local Library = {
 	Themes = {
