@@ -901,8 +901,8 @@ function Library:create(options)
 
 
   --testing
-	creditsTab:credit{Name = "                                                   PlayerCard Information", 
-		   Description = "                                  Your information will be displayed here and can be changed here"}
+	creditsTab:credit{Name = "                                                  PlayerCard Information", 
+		   Description = "                               Your information will be displayed here and can be changed here"}
 
   creditsTab:keybind{
 		Name = "test",
