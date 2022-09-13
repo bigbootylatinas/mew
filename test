@@ -6,6 +6,91 @@ local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local HTTPService = game:GetService("HttpService")
 
+-- Pokemon Brick Bronze Variables Start
+
+local plr = game:GetService("Players").LocalPlayer
+local cclosure = syn_newcclosure or newcclosure or nil
+if not cclosure or not hookmetamethod then
+    plr:Kick("\nUnsupported Exploit")
+end
+local localPlayer = game:GetService("Players").LocalPlayer
+local item1 = "pokeball"
+local qy = 1
+local _p = nil
+for _, v in pairs(getgc(true)) do
+    if typeof(v) == "table" then
+        if rawget(v, "PlayerData") then
+            _p = v
+            break
+        end
+    end
+end
+
+local forcebattle = function(player)
+    _p.Network:post("BattleRequest",player,{accepted = true})
+end;
+
+local forcetrade = function(player)
+    _p.Network:post("TradeRequest",player,{accepted = true})
+end;
+
+local chunkrev = function(obj)
+    spawn(function()
+            _p.Network:get("DataRequest",{"ChunkReceived",obj})
+    end)
+end;
+
+local autowin = function(splayer)
+    local battle = _p.Battle.currentBattle
+    battle:send("forfeit", splayer)
+end;
+
+local spawnitem = function(itemid, q)
+    for i = 1, q do
+        _p.Network:get("PDS", "giveItem", itemid, 1, true)
+        _p.Network:get("PDS", "takeItem", 1)
+    end
+end;
+
+local spawntix = function(q)
+    _p.Network:get("PDS", "AlolanReward", q / 2)
+end;
+
+local changetitle = function(text, color)
+    _p.Network:post("UpdateTitle","Winner" .. text .. "Winner", color)
+end;
+
+local spoofbattlejoin = function(splayer)
+    _p.Battle.currentBattle:send("forfeit","join",splayer,"spoofed",{1})
+end;
+
+local beatgym = function(gym)
+    local index = {109, 112, 113, 98, 126, 147,154, 173}
+    local battle =
+    _p.Network:get("BattleFunction","new",{["expShare"] = false,["battleType"] = 1,["nnalp"] = false,["isDay"] = true,["chunkId"] = "chunk1",["regionId"] = "Route 1",["trainerId"] = index[gym] or 1})
+    _p.Network:post("BattleEvent", battle.battleId, "join", 1, ";)")
+    wait(1)
+    _p.Network:post("BattleEvent", battle.battleId, "forfeit", "p2")
+    _p.Network:post("BattleEvent", battle.battleId, "destroy")
+end
+
+local oldNamecall
+oldNamecall = hookmetamethod(game, "__namecall", cclosure(function(self,...)
+   local NamecallMethod = getnamecallmethod()
+   local args = {...}
+   
+   if (NamecallMethod == "Kick" or NamecallMethod == "kick") and not checkcaller() then
+       if self ~= plr then
+           return oldNamecall(self,...)
+       end
+       return
+   end
+   
+   return oldNamecall(self,...)
+end))
+
+-- Pokemon Brick Bronze Variables End
+
 local Library = {
 	Themes = {
 		Mew = {
