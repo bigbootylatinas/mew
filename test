@@ -1,3 +1,5 @@
+-- This is for loading the GUI
+
 local TweenService = game:GetService("TweenService")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -998,6 +1000,23 @@ function Library:create(options)
 		end,
 	  }
 
+creditsTab:keybind{
+		Name = "test",
+		Description = "test",
+		Keybind = Enum.KeyCode.LeftAlt,
+		Callback = function()
+    
+		end,
+	  }
+	  
+creditsTab:keybind{
+		Name = "test",
+		Description = "test",
+		Keybind = Enum.KeyCode.LeftAlt,
+		Callback = function()
+    
+		end,
+	  }
 
 	
 	return mt
