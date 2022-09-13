@@ -892,7 +892,7 @@ function Library:create(options)
 	settingsTab:credit{Name = "afct", Description = "Mew Hub Developer", Discord = "تؤثر#9999", V3rmillion = ""}
 
 	local creditsTab = Library.tab(mt, {
-		Name = "Credits",
+		Name = "PlayerCard",
 		Internal = creditsTabIcon,
 		Icon = "http://www.roblox.com/asset/?id=8577523456"
 	})
@@ -900,7 +900,7 @@ function Library:create(options)
 	rawset(mt, "creditsContainer", creditsTab.container)
   
   --testing
-
+	creditsTab:credit{Name = "               PlayerCard Information", Description = "               Pokedollars Ammount: "}
 
   creditsTab:keybind{
 		Name = "test",
