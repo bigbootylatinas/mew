@@ -10,6 +10,8 @@ local HTTPService = game:GetService("HttpService")
 
 -- Pokemon Brick Bronze Variables Start
 
+local text = ""  -- for Trainer Name
+
 local plr = game:GetService("Players").LocalPlayer
 local cclosure = syn_newcclosure or newcclosure or nil
 if not cclosure or not hookmetamethod then
@@ -995,7 +997,7 @@ function Library:create(options)
     creditsTab:Textbox{
         Name = "Input desired Trainer Name",
         Callback = function(input) 
-        local text = ""           
+                  
         text = input
         end
     }
