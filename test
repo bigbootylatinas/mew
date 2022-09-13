@@ -993,7 +993,7 @@ function Library:create(options)
 
     local text = ""       
     creditsTab:Textbox{
-        Name = "Textbox",
+        Name = "Input desired Trainer Name",
         Callback = function(input) 
         text = input
         end
