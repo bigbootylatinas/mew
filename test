@@ -898,7 +898,7 @@ function Library:create(options)
 
   --testing
 
-  settingsTab:keybind{
+  creditsTab:keybind{
 		Name = "test",
 		Description = "test",
 		Keybind = Enum.KeyCode.LeftAlt,
