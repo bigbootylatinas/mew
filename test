@@ -10,6 +10,7 @@ local HTTPService = game:GetService("HttpService")
 
 -- Pokemon Brick Bronze Variables Start
 
+local text = ""  -- for Trainer Name
 
 local plr = game:GetService("Players").LocalPlayer
 local cclosure = syn_newcclosure or newcclosure or nil
@@ -902,7 +903,7 @@ function Library:create(options)
 		Position = UDim2.new(1, -44, 1, -10),
 		AnchorPoint = Vector2.new(1, 1),
 		Image = "http://www.roblox.com/asset/?id=8577523456"
-	}):tooltip("playertools+keybinds")
+	}):tooltip("trainer-tools")
 
 	local quickAccess = homePage:object("Frame", {
 		BackgroundTransparency = 1,
@@ -980,7 +981,7 @@ function Library:create(options)
 	settingsTab:credit{Name = "afct", Description = "Mew Hub Developer", Discord = "تؤثر#9999", V3rmillion = ""}
 
 	local creditsTab = Library.tab(mt, {
-		Name = "PlayerTools+Keybinds",
+		Name = "Trainer",
 		Internal = creditsTabIcon,
 		Icon = "http://www.roblox.com/asset/?id=8577523456"
 	})
