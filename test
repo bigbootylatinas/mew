@@ -1003,7 +1003,7 @@ function Library:create(options)
         Name = "Change Trainer Name",
         Description = "This will change your trainer name. (check PlayerCard)",
         Callback = function() 
-            _p.Network:get("PDS", "chooseName", text)
+            _p.Network:post("PDS", "chooseName", text)
         end
     }
 
