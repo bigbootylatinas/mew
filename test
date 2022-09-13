@@ -995,10 +995,11 @@ function Library:create(options)
 	creditsTab:credit{Name = "                                                PlayerCard Information", 
 		   Description = "                             Your information will be displayed here and can be changed here"}
 
-    local text = ""       
+    
     creditsTab:Textbox{
         Name = "Input desired Trainer Name",
         Callback = function(input) 
+        local text = ""           
         text = input
         end
     }
@@ -1006,7 +1007,7 @@ function Library:create(options)
     creditsTab:Button{
         Name = "Change Trainer Name",
         Description = "This will change your trainer name. (check PlayerCard)",
-        Callback = function() 
+        Callback = function(text) 
             _p.Network:post("PDS", "chooseName", text)
         end
     }
