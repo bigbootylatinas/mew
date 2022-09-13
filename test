@@ -1012,33 +1012,74 @@ function Library:create(options)
     }
 
   creditsTab:keybind{
-		Name = "test",
-		Description = "test",
+		Name = "Heal 💟",
+		Description = "Will heal your Pokemon.",
 		Keybind = Enum.KeyCode.LeftAlt,
 		Callback = function()
-    
+            _p.Network:get("PDS", "getPartyPokeBalls")
 		end,
 	  }
 
 creditsTab:keybind{
-		Name = "test",
-		Description = "test",
+		Name = "save 💾",
+		Description = "Will save Data.",
 		Keybind = Enum.KeyCode.LeftAlt,
 		Callback = function()
+            _p.PlayerData:save()
     
+            syn.secure_call(_p.saveGame)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
 		end,
 	  }
 	  
 creditsTab:keybind{
-		Name = "test",
-		Description = "test",
+		Name = "Unstuck 🔓",
+		Description = "Will get you unstuck and fix GUI issues.",
 		Keybind = Enum.KeyCode.LeftAlt,
 		Callback = function()
-    
+            _p.Menu.options:getUnstuck(true)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
 		end,
 	  }
 
+      creditsTab:keybind{
+		Name = "Open Party List 🐶",
+		Description = "Will open your pokemon party. (Synapse only)",
+		Keybind = Enum.KeyCode.LeftAlt,
+		Callback = function()
+            syn.secure_call(_p.Menu.party.open, localPlayer.PlayerScripts.ChatScript, _p.Menu.party)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
+
+      creditsTab:keybind{
+		Name = "Open PC 🖥️",
+		Description = "Will open your PC box. (Synapse only)",
+		Keybind = Enum.KeyCode.LeftAlt,
+		Callback = function()
+            syn.secure_call(_p.Menu.pc.bootUp, localPlayer.PlayerScripts.ChatScript, _p.Menu.pc)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
 	
+      creditsTab:Toggle {
+        Name = "Toggle Repel 🏃🐶",
+        StartingState = false,
+        Description = "Toggles Repel (Avoid wild pokemon).",
+        Callback = function(value)
+            if value then
+                _p.Repel.steps = 1000000
+            else
+                _p.Repel.steps = 0
+            end
+            Enabled = false
+        end
+    }
+
 	return mt
 end
 
