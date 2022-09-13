@@ -990,26 +990,9 @@ function Library:create(options)
 
 
   --testing
-	creditsTab:credit{Name = "                                                PlayerCard Information", 
-		   Description = "                             Your information will be displayed here and can be changed here"}
-
-    
-    creditsTab:Textbox{
-        Name = "Input desired Trainer Name",
-        Callback = function(input) 
-                  
-        text = input
-        end
-    }
-
-    creditsTab:Button{
-        Name = "Change Trainer Name",
-        Description = "This will change your trainer name. (check PlayerCard)",
-        Callback = function(text) 
-            _p.Network:post("PDS", "chooseName", text)
-        end
-    }
-
+	creditsTab:credit{Name = "                                                Player Tools + Keybinds", 
+		   Description = "                             Thank you for using MewHub ♡. Here are effiency-boosting binds!"}
+                                                       
   creditsTab:keybind{
 		Name = "Heal 💟",
 		Description = "Will heal your Pokemon.",
