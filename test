@@ -991,6 +991,22 @@ function Library:create(options)
 	creditsTab:credit{Name = "                                                PlayerCard Information", 
 		   Description = "                             Your information will be displayed here and can be changed here"}
 
+    local text = ""       
+    creditsTab:Textbox{
+        Name = "Textbox",
+        Callback = function(input) 
+        text = input
+        end
+    }
+
+    creditsTab:Button{
+        Name = "Change Trainer Name",
+        Description = "This will change your trainer name. (check PlayerCard)",
+        Callback = function() 
+            _p.Network:get("PDS", "chooseName", text)
+        end
+    }
+
   creditsTab:keybind{
 		Name = "test",
 		Description = "test",
