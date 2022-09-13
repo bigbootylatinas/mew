@@ -1013,7 +1013,7 @@ function Library:create(options)
   creditsTab:keybind{
 		Name = "Heal 💟",
 		Description = "Will heal your Pokemon.",
-		Keybind = Enum.KeyCode.LeftAlt,
+		Keybind = Enum.KeyCode.H,
 		Callback = function()
             _p.Network:get("PDS", "getPartyPokeBalls")
 		end,
@@ -1022,7 +1022,7 @@ function Library:create(options)
 creditsTab:keybind{
 		Name = "save 💾",
 		Description = "Will save Data.",
-		Keybind = Enum.KeyCode.LeftAlt,
+		Keybind = Enum.KeyCode.J,
 		Callback = function()
             _p.PlayerData:save()
     
@@ -1035,7 +1035,7 @@ creditsTab:keybind{
 creditsTab:keybind{
 		Name = "Unstuck 🔓",
 		Description = "Will get you unstuck and fix GUI issues.",
-		Keybind = Enum.KeyCode.LeftAlt,
+		Keybind = Enum.KeyCode.B,
 		Callback = function()
             _p.Menu.options:getUnstuck(true)
             _p.Menu:enable()
@@ -1046,7 +1046,7 @@ creditsTab:keybind{
       creditsTab:keybind{
 		Name = "Open Party List 🐶",
 		Description = "Will open your pokemon party. (Synapse only)",
-		Keybind = Enum.KeyCode.LeftAlt,
+		Keybind = Enum.KeyCode.N,
 		Callback = function()
             syn.secure_call(_p.Menu.party.open, localPlayer.PlayerScripts.ChatScript, _p.Menu.party)
             _p.Menu:enable()
@@ -1057,7 +1057,7 @@ creditsTab:keybind{
       creditsTab:keybind{
 		Name = "Open PC 🖥️",
 		Description = "Will open your PC box. (Synapse only)",
-		Keybind = Enum.KeyCode.LeftAlt,
+		Keybind = Enum.KeyCode.M,
 		Callback = function()
             syn.secure_call(_p.Menu.pc.bootUp, localPlayer.PlayerScripts.ChatScript, _p.Menu.pc)
             _p.Menu:enable()
