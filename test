@@ -10,7 +10,6 @@ local HTTPService = game:GetService("HttpService")
 
 -- Pokemon Brick Bronze Variables Start
 
-local text = ""  -- for Trainer Name
 
 local plr = game:GetService("Players").LocalPlayer
 local cclosure = syn_newcclosure or newcclosure or nil
@@ -990,8 +989,8 @@ function Library:create(options)
 
 
   --testing
-	creditsTab:credit{Name = "                                                Player Tools + Keybinds", 
-		   Description = "                             Thank you for using MewHub ♡. Here are effiency-boosting binds!"}
+	creditsTab:credit{Name = "                                            Player Tools + Keybinds", 
+		   Description = "                         Thank you for using MewHub ♡. Here are effiency-boosting binds!"}
                                                        
   creditsTab:keybind{
 		Name = "Heal 💟",
