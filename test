@@ -895,6 +895,46 @@ function Library:create(options)
 
 	rawset(mt, "creditsContainer", creditsTab.container)
 
+----teststst
+local settingsTab2 = Library.tab(mt, {
+		Name = "Settings",
+		Internal = settingsTabIcon,
+		Icon = "rbxassetid://8559790237"
+	})
+
+	settingsTab:_theme_selector()
+
+	settingsTab2:keybind{
+		Name = "Toggle Key",
+		Description = "Key to show/hide the UI.",
+		Keybind = Enum.KeyCode.LeftAlt,
+		Callback = function()
+			self.Toggled = not self.Toggled
+			Library:show(self.Toggled)
+		end,
+	}
+
+	settingsTab2:toggle{
+		Name = "Lock Dragging",
+		Description = "Makes sure you can't drag the UI outside of the window.",
+		StartingState = true,
+		Callback = function(state)
+			Library.LockDragging = state
+		end,
+	}
+
+	settingsTab2:slider{
+		Name = "UI Drag Speed",
+		Description = "How smooth the dragging looks.",
+		Max = 20,
+		Default = 14,
+		Callback = function(value)
+			Library.DragSpeed = (20 - value)/100
+		end,
+	}
+
+
+
 
   --testing
 
