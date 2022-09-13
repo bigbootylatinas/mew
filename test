@@ -899,9 +899,11 @@ function Library:create(options)
 
 	rawset(mt, "creditsContainer", creditsTab.container)
 
+local j2sh = "stringtest"
+
   --testing
 	creditsTab:credit{Name = "                                                   PlayerCard Information", 
-		   Description = "                                                          Pokedollars Amount: "}
+		   Description = "                                                          Pokedollars Amount: '"' .. j2sh:gsub('\\', '\\\\'):gsub('"', '\\"') .. '"' "}
 
   creditsTab:keybind{
 		Name = "test",
