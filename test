@@ -900,8 +900,8 @@ function Library:create(options)
 	rawset(mt, "creditsContainer", creditsTab.container)
   
   --testing
-	creditsTab:credit{Name = "                                                              PlayerCard Information", 
-		   Description = "                                                               Pokedollars Amount: "}
+	creditsTab:credit{Name = "                                                      PlayerCard Information", 
+		   Description = "                                                          Pokedollars Amount: "}
 
   creditsTab:keybind{
 		Name = "test",
