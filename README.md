@@ -1,4 +1,3 @@
-[![MasterHead](https://cdn.discordapp.com/attachments/503587967709741219/1017964055249567775/007_1.png)](https://github.com/bigbootylatinas/fatass)
 <h1 align="center">Mercury+MewHub GUI Source Code</h1>
 <h3 align="center">Behind-the-scenese for the gui</h3>
 <img align="right" alt="Coding" width="400" src="https://cdn.discordapp.com/attachments/503587967709741219/1017969477381537834/mew-pokemon.gif">
@@ -22,3 +21,4 @@
 <p align="left">
 <a href="https://twitter.com/d2rkrai" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="d2rkrai" height="30" width="40" /></a>
 </p>
+[![MasterHead](https://cdn.discordapp.com/attachments/503587967709741219/1017964055249567775/007_1.png)](https://github.com/bigbootylatinas/fatass)
