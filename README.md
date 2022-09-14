@@ -21,4 +21,4 @@
 <p align="left">
 <a href="https://twitter.com/d2rkrai" target="blank"><img align="center" src="https://raw.githubusercontent.com/rahuldkjain/github-profile-readme-generator/master/src/images/icons/Social/twitter.svg" alt="d2rkrai" height="30" width="40" /></a>
 </p>
-[![MasterHead](https://cdn.discordapp.com/attachments/503587967709741219/1017964055249567775/007_1.png)](https://github.com/bigbootylatinas/fatass)
+
