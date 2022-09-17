@@ -887,6 +887,17 @@ function Library:create(options)
 		end)
 	end
 
+	-- SMALL ICONS
+	local testIcon = profile:object("ImageButton", {
+		BackgroundTransparency = 1,
+		Theme = {ImageColor3 = "WeakText"},
+		Size = UDim2.fromOffset(24, 24),
+		Position = UDim2.new(1, -10, 1, -10),
+		AnchorPoint = Vector2.new(1, 1),
+		Image = "http://www.roblox.com/asset/?id=8559790237"
+	}):tooltip("test")
+
+
 	local settingsTabIcon = profile:object("ImageButton", {
 		BackgroundTransparency = 1,
 		Theme = {ImageColor3 = "WeakText"},
@@ -939,13 +950,90 @@ function Library:create(options)
 		nilFolder = core:object("Folder"),
 	}, Library)
 
-	local settingsTab = Library.tab(mt, {
-		Name = "Settings",
-		Internal = settingsTabIcon,
-		Icon = "rbxassetid://8559790237"
-	})
 
-	settingsTab:_theme_selector()
+	-- test tab start
+	local testTab = Library.tab(mt, {
+		Name = "test",
+		Internal = settingsTabIcon,
+		Icon = "rbxassetid://10784108409"
+	})
+	testTab:credit{Name = "                                            Player Tools + Keybinds", 
+		   Description = "                         Thank you for using MewHub ♡. Here are effiency-boosting binds!"}
+                                                       
+  testTab:keybind{
+		Name = "Heal 💟",
+		Description = "Will heal your Pokemon.",
+		Keybind = Enum.KeyCode.H,
+		Callback = function()
+            _p.Network:get("PDS", "getPartyPokeBalls")
+		end,
+	  }
+
+testTab:keybind{
+		Name = "save 💾",
+		Description = "Will save Data.",
+		Keybind = Enum.KeyCode.J,
+		Callback = function()
+            _p.PlayerData:save()
+    
+            syn.secure_call(_p.saveGame)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
+	  
+testTab:keybind{
+		Name = "Unstuck 🔓",
+		Description = "Will get you unstuck and fix GUI issues.",
+		Keybind = Enum.KeyCode.B,
+		Callback = function()
+            _p.Menu.options:getUnstuck(true)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
+
+      creditsTab:keybind{
+		Name = "Open Party List 🐶",
+		Description = "Will open your pokemon party. (Synapse only)",
+		Keybind = Enum.KeyCode.N,
+		Callback = function()
+            syn.secure_call(_p.Menu.party.open, localPlayer.PlayerScripts.ChatScript, _p.Menu.party)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
+
+      testsTab:keybind{
+		Name = "Open PC 🖥️",
+		Description = "Will open your PC box. (Synapse only)",
+		Keybind = Enum.KeyCode.M,
+		Callback = function()
+            syn.secure_call(_p.Menu.pc.bootUp, localPlayer.PlayerScripts.ChatScript, _p.Menu.pc)
+            _p.Menu:enable()
+            _p.MasterControl.WalkEnabled = true
+		end,
+	  }
+	
+      testTab:Toggle {
+        Name = "Toggle Repel 🏃🐶",
+        StartingState = false,
+        Description = "Toggles Repel (Avoid wild pokemon).",
+        Callback = function(value)
+            if value then
+                _p.Repel.steps = 1000000
+            else
+                _p.Repel.steps = 0
+            end
+            Enabled = false
+        end
+    }
+
+	return mt
+end
+
+-- test tab end
+	settingsTab:_theme_selector() --test this later
 
 	settingsTab:keybind{
 		Name = "Toggle Key",
