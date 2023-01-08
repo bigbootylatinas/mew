@@ -874,12 +874,25 @@ function Library:create(options)
 		Text = tostring(os.date("%X")):sub(1, os.date("%X"):len()-3)
 	})
 
+	do
+		local desiredInterval = 1
+		local counter = 0
+		RunService.Heartbeat:Connect(function(step)
+			counter += step  
+			if counter >= desiredInterval then
+				counter -= desiredInterval
+				local date = tostring(os.date("%X"))
+				timeDisplay.Text = date:sub(1, date:len()-3)
+			end
+		end)
+	end
+
 	-- SMALL ICONS
 	local testIcon = profile:object("ImageButton", {
 		BackgroundTransparency = 1,
 		Theme = {ImageColor3 = "WeakText"},
 		Size = UDim2.fromOffset(24, 24),
-		Position = UDim2.new(1, -74, 1, -10),
+		Position = UDim2.new(1, -10, 1, -10),
 		AnchorPoint = Vector2.new(1, 1),
 		Image = "http://www.roblox.com/asset/?id=8559790237"
 	}):tooltip("test")
